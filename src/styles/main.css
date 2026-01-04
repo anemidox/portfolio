@@ -1,0 +1,89 @@
+/* src/styles/main.css */
+
+/* 1. Global Variables & Theme Configuration */
+:root {
+    /* Color Palette - Matches the WebGPU shader colors */
+    --bg-dark: #111112;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    
+    --accent-red: #111112;
+    --accent-amber: #ffaa00;
+    --accent-acid: #ccff00; /* For the "weird" 2030 look */
+
+    /* Glassmorphism Settings */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-blur: blur(20px);
+
+    /* Typography */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace; /* For code/tech aesthetics */
+}
+
+/* 2. Reset & Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    -webkit-font-smoothing: antialiased; /* Crisper text on macOS */
+}
+
+/* 3. Utility Class: The Glass Card Effect */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur); /* Safari support */
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* 4. Typography Styles */
+h1, h2, h3 {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+h1.hero-title {
+    font-size: clamp(3rem, 8vw, 6rem); /* Responsive huge text */
+    line-height: 0.9;
+    text-transform: uppercase;
+    
+    /* Gradient Text Effect */
+    background: linear-gradient(to right, #fff, var(--accent-amber));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+code, .mono {
+    font-family: var(--font-mono);
+    color: var(--accent-acid);
+    font-size: 0.9em;
+}
+
+/* 5. Layout Helpers */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 6. Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-entry {
+    animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}

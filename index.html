@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="High-Performance Engineering Portfolio"
+        />
+        <title>Dhanuja | Future Artifacts</title>
+
+        <style>
+            :root {
+                --bg-dark: #111112;
+                --text-main: #ffffff;
+            }
+            body {
+                margin: 0;
+                background-color: var(--bg-dark);
+                color: var(--text-main);
+                overflow: hidden;
+                font-family:
+                    system-ui,
+                    -apple-system,
+                    sans-serif;
+            }
+            #gpu-canvas {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: -1;
+                pointer-events: none;
+            }
+            #app {
+                position: relative;
+                z-index: 1;
+                opacity: 0;
+                transition: opacity 0.5s ease-out;
+            }
+        </style>
+
+        <link
+            rel="stylesheet"
+            href="./src/styles/main.css"
+            media="print"
+            onload="this.media = 'all'"
+        />
+
+        <link rel="modulepreload" href="./src/main.js" />
+    </head>
+    <body>
+        <canvas id="gpu-canvas"></canvas>
+
+        <main id="app">
+            <noscript>
+                <div style="padding: 20px; text-align: center">
+                    <h2>System Error: JavaScript Required</h2>
+                    <p>
+                        To access this interface, enable JavaScript and use a
+                        WebGPU capable browser.
+                    </p>
+                </div>
+            </noscript>
+        </main>
+
+        <script type="module" src="./src/main.js"></script>
+    </body>
+</html>
